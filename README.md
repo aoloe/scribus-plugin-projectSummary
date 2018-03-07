@@ -1,6 +1,39 @@
-# Scribus Project Summary
+# Scribus Plugin: Project summary
 
-Create a text summary of the content and settings of a Scribus file.
+Scribus plugin creating a text summary of the content and settings of a Scribus file.
+
+This plugin creates a Yaml file that can be read (by humans...) and further processed (by computers).
+
+You can create a summary through the  "Project Summary..." entry in the "Extras" menu.
+
+## Features
+
+- Create a `.yaml` file in a directory specified by the user.
+- The file contains:
+  - a list of all external images used in the `.sla` file
+   
+
+## Status
+
+Currently, the file only contains the list of the images, with their path relative to the `.sla` file (or an absolute path for the images that are not in a subdirectory of the project).
+
+Please, use the Github issues to propose new fields and data to be included in the project.
+
+## Installing
+
+First make sure that you have the ScribusAPI plugin installed (https://github.com/aoloe/scribus-plugin-API).
+
+Clone the `scribus-plugin-projectSummary` repository and put – or symlink – its `src` directory into `scribus/plugins/` as `projectSummary`. Then add 
+
+    ADD_SUBDIRECTORY(projectSummary)
+
+to `CMakeList.txt` file in `scribus/plugins/`.
+
+`make` your Scribus.
+
+_Warning_: If you're compiler does not default to c++11, you will have to add `-DWANT_CPP11` to your cmake command.
+
+## Notes
 
 - It has been asked multiple times to have a way to get a project summary / description / printing instructions
   - But I can't find the tickets in the bug tracker.
@@ -38,13 +71,6 @@ Create a text summary of the content and settings of a Scribus file.
     - https://stackoverflow.com/questions/3342355/save-a-yaml-emitter-content-to-a-file-with-yaml-cpp : a few lines to output a yaml
   - or use it as a dependency to the deb package?
     - <https://stackoverflow.com/questions/23656282/fatal-error-yaml-cpp-yaml-h-no-such-file-or-directory>
-
-## Todo
-
-- allow to pass the filename to the plugin and avoid the save as dialog.
-- eventually use the last path instead of the current path...
-
-## Notes
 
 ### YAML usages
 
@@ -95,3 +121,9 @@ Create a text summary of the content and settings of a Scribus file.
     qDebug() << out.c_str();
 }
 ```
+
+## Todo
+
+- allow to pass the filename to the plugin and avoid the save as dialog.
+- eventually use the last path instead of the current path...
+- move to the "File" menu, after the "Collect for output..."
