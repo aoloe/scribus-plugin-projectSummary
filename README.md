@@ -27,7 +27,7 @@ Clone the `scribus-plugin-projectSummary` repository and put – or symlink – 
 
     ADD_SUBDIRECTORY(projectSummary)
 
-to `CMakeList.txt` file in `scribus/plugins/`.
+to `CMakeLists.txt` file in `scribus/plugins/`.
 
 `make` your Scribus.
 
@@ -37,7 +37,8 @@ _Warning_: If you're compiler does not default to c++11, you will have to add `-
 
 - It has been asked multiple times to have a way to get a project summary / description / printing instructions
   - But I can't find the tickets in the bug tracker.
-  - [Preflight Verifier: Design a report for printing with the the new file tester](https://bugs.scribus.net/view.php?id=1770) by mrdocs
+  - [Preflight Verifier: Design a report for printing with the the new file tester](https://bugs.scribus.net/view.php?id=1770) by mrdocs.
+  - [Afterflight checker : Warn when some image is outside "images" folder](https://bugs.scribus.net/view.php?id=12480) by jluc.
 - InDesign produces an `Instructions.txt` file when packaging the project
   - some people are not happy that they're not able to avoid the creation of the file
     - <https://indesign.uservoice.com/forums/601021-adobe-indesign-feature-requests/suggestions/20365246-make-the-instructions-txt-file-choosable-when-pa>
@@ -124,6 +125,16 @@ _Warning_: If you're compiler does not default to c++11, you will have to add `-
 
 ## Todo
 
+- add the resolution and size in px of each image
+- Find out how to correctly include yaml-cpp in the project
+  - https://github.com/jbeder/yaml-cpp/issues/127
+  - https://github.com/jbeder/yaml-cpp/issues/347
+  - https://github.com/jbeder/yaml-cpp/issues/427
+  - https://github.com/jbeder/yaml-cpp/pull/446
+  - https://github.com/jbeder/yaml-cpp/issues/439
+  - https://github.com/jbeder/yaml-cpp/issues/439
+  - https://github.com/ethz-asl/yaml_cpp_catkin/blob/master/CMakeLists.txt
+  - https://stackoverflow.com/questions/14077611/how-do-i-tell-cmake-to-link-in-a-static-library-in-the-source-directory
 - allow to pass the filename to the plugin and avoid the save as dialog.
 - eventually use the last path instead of the current path...
 - move to the "File" menu, after the "Collect for output..."
